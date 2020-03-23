@@ -1,12 +1,12 @@
 using BinaryBuilder
 
 name = "LibGit2"
-version = v"0.28.2"
+version = v"0.99.0"
 
 # Collection of sources required to build libgit2
 sources = [
    "https://github.com/libgit2/libgit2.git" =>
-   "b3e1a56ebb2b9291e82dc027ba9cbcfc3ead54d3",
+   "172239021f7ba04fe7327647b213799853a9eb89",
    "./bundled",
 ]
 
@@ -55,7 +55,6 @@ products = [
 dependencies = [
     "MbedTLS_jll",
     "LibSSH2_jll",
-    "LibCURL_jll",
 ]
 
 # Build the tarballs, and possibly a `build.jl` as well.
