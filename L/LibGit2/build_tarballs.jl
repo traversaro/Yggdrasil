@@ -54,6 +54,7 @@ products = [
 
 # Dependencies that must be installed before this package can be built
 dependencies = [
+    Dependency("Libiconv_jll"),
     Dependency("MbedTLS_jll"),
     Dependency("LibSSH2_jll"),
 ]
