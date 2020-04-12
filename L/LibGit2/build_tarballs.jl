@@ -31,8 +31,10 @@ if [[ ${target} == *-mingw* ]]; then
         BUILD_FLAGS+=(-DCMAKE_C_FLAGS="-mincoming-stack-boundary=2")
     fi
 elif [[ ${target} == *linux* ]] || [[ ${target} == *freebsd* ]]; then
-    # If we're on Linux or FreeBSD, explicitly ask for mbedTLS instead of OpenSSL
-    BUILD_FLAGS+=(-DUSE_HTTPS=mbedTLS -DSHA1_BACKEND=CollisionDetection -DCMAKE_INSTALL_RPATH="\$ORIGIN")
+    # If we're on Linux or FreeBSD, explicitly ask for mbedTLS instead of OpenSSL.
+    # Disable NTLM because it requires MD4, which is not provided by our build
+    # of MbedTLS, as it's considered unsafe.
+    BUILD_FLAGS+=(-DUSE_HTTPS=mbedTLS -DSHA1_BACKEND=CollisionDetection -DCMAKE_INSTALL_RPATH="\$ORIGIN" -DUSE_NTLMCLIENT=OFF)
 fi
 export CFLAGS="-I${prefix}/include"
 
